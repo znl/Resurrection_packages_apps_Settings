@@ -12,6 +12,10 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <!-- Reset battery stats -->
+    <string name="menu_stats_reset">重置统计信息</string>
+    <string name="reset_stats_msg">电池历史记录统计信息将被重置</string>
+
     <!-- Custom light color -->
     <string name="light_customization">LED灯光通知</string>
     <string name="custom_light_title">浅色</string>
