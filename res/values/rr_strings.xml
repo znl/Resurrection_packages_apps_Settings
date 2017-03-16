@@ -472,6 +472,10 @@
     <string name="show_3g_title">Show 3G</string>
     <string name="show_3g_summary">Show 3G instead of H+ in signal icons</string>
 
+    <!-- Volte Icon -->
+    <string name="volte_icon_enabled_title">Show Volte icon</string>
+    <string name="volte_icon_enabled_summary">Show Volte icon instead of LTE if device supports it</string>
+
     <!-- Gesture Anywhere -->
     <string name="gestures_settings">Gestures</string>
     <string name="gesture_anywhere_title">Gestures anywhere</string>
