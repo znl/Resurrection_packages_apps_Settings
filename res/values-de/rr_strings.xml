@@ -1746,10 +1746,16 @@
   <string name="less_notification_sounds_title">Smarte Benachrichtigungstöne</string>
   <string name="less_notification_sounds_summary">Die Benachrichtigungs-Töne einer App nur einmal pro festgelegtem Zeitraum wiedergeben</string>
   <string name="less_notification_sounds_default">Apps-Standardeinstellung</string>
+  <string name="less_notification_sounds_3s">Alle 3 Sekunden</string>
+  <string name="less_notification_sounds_5s">Alle 5 Sekunden</string>
   <string name="less_notification_sounds_10s">Alle 10 Sekunden</string>
+  <string name="less_notification_sounds_15s">Alle 15 Sekunden</string>
   <string name="less_notification_sounds_30s">Alle 30 Sekunden</string>
   <string name="less_notification_sounds_1m">Jede Minute</string>
   <string name="less_notification_sounds_2m">Alle 2 Minuten</string>
+  <string name="less_notification_sounds_5m">Alle 5 Minuten</string>
+  <string name="less_notification_sounds_10m">Alle 10 Minuten</string>
+  <string name="less_notification_sounds_20m">Alle 20 Minuten</string>
   <!-- Screenshot -->
   <string name="screenshot_type_title">Screenshot-Typ</string>
   <string name="screenshot_type_fullscreen">Vollbild Screenshot</string>

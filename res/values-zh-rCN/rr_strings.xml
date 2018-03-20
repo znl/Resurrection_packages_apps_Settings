@@ -1746,10 +1746,16 @@
   <string name="less_notification_sounds_title">智能通知提示音</string>
   <string name="less_notification_sounds_summary">每个应用的通知提示音在设定的时间段内只响一次</string>
   <string name="less_notification_sounds_default">应用默认值</string>
+  <string name="less_notification_sounds_3s">每 3 秒</string>
+  <string name="less_notification_sounds_5s">每 5 秒</string>
   <string name="less_notification_sounds_10s">每 10 秒</string>
+  <string name="less_notification_sounds_15s">每 15 秒</string>
   <string name="less_notification_sounds_30s">每 30 秒</string>
   <string name="less_notification_sounds_1m">每分钟</string>
   <string name="less_notification_sounds_2m">每两分钟</string>
+  <string name="less_notification_sounds_5m">每五分钟</string>
+  <string name="less_notification_sounds_10m">每十分钟</string>
+  <string name="less_notification_sounds_20m">每二十分钟</string>
   <!-- Screenshot -->
   <string name="screenshot_type_title">屏幕截图类型</string>
   <string name="screenshot_type_fullscreen">全屏截图</string>
