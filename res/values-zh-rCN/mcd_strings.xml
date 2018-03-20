@@ -21,6 +21,29 @@
     <string name="value_equals_default">自动</string>
     <string name="show_light_on_zen_title">勿扰模式下灯光闪烁</string>
 
+    <!-- Heads up timeout -->
+    <string name="heads_up_time_out_title">超时</string>
+    <string name="heads_up_time_out_summary">查看通知将显示为 <xliff:g id="number">%d</xliff:g> 秒</string>
+    <string name="heads_up_time_out_2sec">2 秒</string>
+    <string name="heads_up_time_out_3sec">3 秒</string>
+    <string name="heads_up_time_out_4sec">4 秒</string>
+    <string name="heads_up_time_out_5sec">5 秒</string>
+    <string name="heads_up_time_out_6sec">6 秒</string>
+    <string name="heads_up_time_out_8sec">8 秒</string>
+    <string name="heads_up_time_out_10sec">10 秒</string>
+
+    <!-- Heads up snooze -->
+    <string name="heads_up_snooze_title">暂停计时器</string>
+    <string name="heads_up_snooze_summary_one_minute">上滑弹出通知将使此应用的浮动通知进入打盹状态 1 分钟</string>
+    <string name="heads_up_snooze_summary">上滑弹出通知将使此应用的浮动通知进入打盹状态 <xliff:g id="number">%d</xliff:g> 分钟</string>
+    <string name="heads_up_snooze_disabled_summary">暂停计时器已禁用</string>
+    <string name="heads_up_snooze_1min">1 分钟</string>
+    <string name="heads_up_snooze_3min">3 分钟</string>
+    <string name="heads_up_snooze_5min">5 分钟</string>
+    <string name="heads_up_snooze_10min">10 分钟</string>
+    <string name="heads_up_snooze_15min">15 分钟</string>
+    <string name="heads_up_snooze_20min">20 分钟</string>
+
     <!-- Wakelock blocker -->
     <string name="wakelock_blocker_title">唤醒拦截器</string>
     <string name="wakelock_blocker_summary">阻止系统唤醒</string>
