@@ -20,13 +20,25 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/rr_misc_title">
 
-     <PreferenceScreen
+    <PreferenceScreen
+            android:key="wakelock_blocker"
+            android:title="@string/wakelock_blocker_title"
+	    android:summary="@string/wakelock_blocker_summary"
+            android:fragment="com.android.settings.rr.fragments.WakeLockBlocker" />
+
+    <PreferenceScreen
+            android:id="@+id/alarm_blocker"
+            android:title="@string/alarm_blocker"
+	    android:summary="@string/alarm_blocker_summary"
+            android:fragment="com.android.settings.rr.fragments.AlarmBlocker" />
+
+    <PreferenceScreen
             android:key="suspend_actions"
             android:title="@string/screen_state_toggles_title"
             android:icon="@drawable/rr_suspend_icon"
             android:fragment="com.android.settings.rr.SuspendActions" />
 
-     <PreferenceScreen
+    <PreferenceScreen
             android:title="@string/weather_title"
             android:summary="@string/weather_config_title"
             android:icon="@drawable/ic_settings_weather"
@@ -41,7 +53,7 @@
             android:summary="@string/system_app_remover_summary"
             android:fragment="com.android.settings.rr.fragments.SystemappRemover" />
 
-     <!-- IME Options -->
+    <!-- IME Options -->
     <PreferenceScreen
             android:id="@+id/ime_settings"
             android:key="ime_settings"

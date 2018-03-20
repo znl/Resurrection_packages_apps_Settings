@@ -20,4 +20,23 @@
     <string name="app_notifications_info_desc">点击以上任意的频道以配置灯光颜色和其他选项</string>
     <string name="value_equals_default">自动</string>
     <string name="show_light_on_zen_title">勿扰模式下灯光闪烁</string>
+
+    <!-- Wakelock blocker -->
+    <string name="wakelock_blocker_title">唤醒拦截器</string>
+    <string name="wakelock_blocker_summary">阻止系统唤醒</string>
+    <string name="wakelock_blocker_save">保存</string>
+    <string name="wakelock_list_header">可用的唤醒锁</string>
+    <string name="wakelock_blocker_reload">刷新</string>
+    <string name="wakelock_blocker_warning_title">谨慎操作</string>
+    <string name="wakelock_blocker_warning">拦截唤醒锁可能导致系统不稳定、崩溃甚至数据丢失！</string>
+
+    <!-- Alarm blocker -->
+    <string name="alarm_blocker">警报拦截器</string>
+    <string name="alarm_blocker_title">启用</string>
+    <string name="alarm_blocker_summary">屏幕关闭时屏蔽警报</string>
+    <string name="alarm_blocker_save">保存</string>
+    <string name="alarm_list_header">可用的警报</string>
+    <string name="alarm_blocker_reload">刷新</string>
+    <string name="alarm_blocker_warning_title">谨慎操作</string>
+    <string name="alarm_blocker_warning">拦截警报可能导致系统不稳定、崩溃甚至数据丢失！</string>
 </resources>
