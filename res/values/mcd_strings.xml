@@ -180,6 +180,9 @@
     <string name="action_location_battery_saving_title">Location battery saving</string>
     <string name="action_location_high_accuracy_title">Location high accuracy</string>
 
+    <!-- OmniSwitch -->
+    <string name="omni_switch_title">OmniSwitch</string>
+
     <!-- Wallpaper tint -->
     <string name="wallpaper_tint_power_menu">Power menu background tint</string>
     <string name="wallpaper_tint_recents">Recents background tint</string>
