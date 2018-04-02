@@ -44,6 +44,10 @@
     <string name="heads_up_snooze_15min">15 分钟</string>
     <string name="heads_up_snooze_20min">20 分钟</string>
 
+    <!-- MTP Dirty Hack -->
+    <string name="enable_mtp_dirtyhack_title">MTP 代替充电</string>
+    <string name="enable_mtp_dirtyhack_summary">当连接PC时启用MTP文件传输代替充电</string>
+
     <!-- Wakelock blocker -->
     <string name="wakelock_blocker_title">唤醒拦截器</string>
     <string name="wakelock_blocker_summary">阻止系统唤醒</string>
