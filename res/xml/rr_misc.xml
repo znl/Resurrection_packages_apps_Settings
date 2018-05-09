@@ -27,6 +27,12 @@
             android:defaultValue="true" />
 
     <PreferenceScreen
+	    android:key="event_service_settings"
+            android:title="@string/event_service_settings_title"
+            android:icon="@drawable/ic_settings_event_service"
+            android:fragment="org.omnirom.omnigears.service.EventServiceSettings" />
+
+    <PreferenceScreen
             android:key="wakelock_blocker"
             android:title="@string/wakelock_blocker_title"
 	    android:summary="@string/wakelock_blocker_summary"

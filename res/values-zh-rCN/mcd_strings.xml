@@ -66,4 +66,55 @@
     <string name="alarm_blocker_reload">刷新</string>
     <string name="alarm_blocker_warning_title">谨慎操作</string>
     <string name="alarm_blocker_warning">拦截警报可能导致系统不稳定、崩溃甚至数据丢失！</string>
+
+    <!-- AppSelectListPreference -->
+    <string name="choose_app">选择应用</string>
+    <string name="not_ready_summary">处理中...</string>
+    <string name="resolve_failed_summary">处理应用程序失败</string>
+    <string name="disabled_entry">禁用</string>
+    <string name="action_save">保存</string>
+
+    <!-- System Events -->
+    <string name="event_service_settings_title">事件</string>
+    <string name="category_media_player_title">媒体播放器</string>
+    <string name="bt_a2dp_connect_app_list_title">蓝牙 A2DP 连接</string>
+    <string name="headset_connect_app_list_title">有线耳机连接</string>
+    <string name="event_service_enabled_title">启用事件服务</string>
+    <string name="event_service_running">服务正在运行</string>
+    <string name="event_service_stopped">服务未运行</string>
+    <string name="category_media_player_info_title">应用程序选择</string>
+    <string name="media_player_autostart_title">启动后发送媒体播放事件</string>
+    <string name="media_player_music_active_title">播放时不启动事件</string>
+    <string name="autorun_single_app_title">自动运行单个应用程序</string>
+    <string name="autorun_single_app_summary">不显示应用程序选择对话框</string>
+    <string name="bt_a2dp_connect_app_list_summary">当A2DP事件被触发时应用程序(s) 将被列出，例如连接蓝牙耳机</string>
+    <string name="headset_connect_app_list_summary">连接有线耳机时要列出的应用程序(s)</string>
+    <string name="app_chooser_left">左侧</string>
+    <string name="app_chooser_right">右侧</string>
+    <string name="unit_sec">秒</string>
+    <string name="unit_minutes">分钟</string>
+    <string name="app_chooser_timeout_title">应用程序选择器对话超时</string>
+    <string name="app_chooser_position_title">应用程序选择器对话框位置</string>
+    <string name="wired_events_threshold_title">有线耳机事件阈值</string>
+    <string name="wired_events_threshold_summary">在阈值时间内忽略耳机事件</string>
+    <string name="category_network_title">网络</string>
+    <string name="disable_wifi_threshold_title">自动关闭WiFi</string>
+    <string name="disable_wifi_threshold_summary">如果从网络断开连接时停用WiFi，几分钟后我们不会重新连接</string>
+    <string name="tagged_networks_summary">%1$d 网络标记</string>
+    <string name="home_networks_title">家庭网络</string>
+    <string name="tagged_networks_title">Tagged networks</string>
+    <string name="home_network_events_summary">家庭网络事件</string>
+    <string name="home_connect_actions_title">连接到家庭网络时</string>
+    <string name="omni_actions_summary">%1$d 选择的操作</string>
+    <string name="home_disconnect_actions_title">从家庭网络断开连接时</string>
+    <string name="work_networks_title">工作网络</string>
+    <string name="work_network_events_summary">工作网络事件</string>
+    <string name="work_connect_actions_title">连接到工作网络时</string>
+    <string name="work_disconnect_actions_title">从工作网络断开连接时</string>
+
+    <!-- Omni actions -->
+    <string name="action_location_off_title">关闭定位</string>
+    <string name="action_location_sensors_only_title">仅限设备</string>
+    <string name="action_location_battery_saving_title">低耗电量</string>
+    <string name="action_location_high_accuracy_title">高精确度</string>
 </resources>

@@ -22,6 +22,14 @@
         <attr name="defaultText" format="string|reference" />
     </declare-styleable>
 
+    <!-- Base attributes available to SeekBarPreference. -->
+    <declare-styleable name="SeekBarPreference">
+        <attr name="min" format="integer" />
+        <attr name="interval" format="integer" />
+        <attr name="unitsLeft" format="string|reference" />
+        <attr name="unitsRight" format="string|reference" />
+    </declare-styleable>
+
     <!-- Value to pass to callback when restore button is pressed -->
     <declare-styleable name="ColorPickerPreference">
         <attr name="defaultColorValue" format="integer" />

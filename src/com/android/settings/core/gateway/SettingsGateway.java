@@ -144,6 +144,7 @@ import com.android.settings.rr.About;
 import com.android.settings.rr.pie.PieSettings;
 import com.android.settings.rr.ExpandedDesktopPreferenceFragment;
 
+import org.omnirom.omnigears.service.EventServiceSettings;
 
 public class SettingsGateway {
 
@@ -275,7 +276,8 @@ public class SettingsGateway {
             About.class.getName(),
             PieSettings.class.getName(),
             SmartPixels.class.getName(),
-            RunningServices.class.getName()
+            RunningServices.class.getName(),
+            EventServiceSettings.class.getName()
     };
 
     public static final String[] SETTINGS_FOR_RESTRICTED = {
@@ -323,6 +325,7 @@ public class SettingsGateway {
             Settings.AboutSettingsActivity.class.getName(),
             Settings.PieControlSettingsActivity.class.getName(),
             Settings.SmartPixelsActivity.class.getName(),
-            Settings.DevRunningServicesActivity.class.getName()
+            Settings.DevRunningServicesActivity.class.getName(),
+            Settings.EventServiceSettingsActivity.class.getName()
     };
 }
