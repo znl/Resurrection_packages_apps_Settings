@@ -21,6 +21,26 @@
     <string name="value_equals_default">自动</string>
     <string name="show_light_on_zen_title">勿扰模式下灯光闪烁</string>
 
+    <!-- Hide Lockscreen clock, date, & alarm -->
+    <string name="lockscreen_items_other">其他</string>
+    <string name="hide_lockscreen_clock_title">时钟部件</string>
+    <string name="hide_lockscreen_clock_summary">更改时钟小部件的可见性</string>
+    <string name="lockscreen_clock_selection_title">时钟样式</string>
+    <string name="lockscreen_clock_selection_digital">默认</string>
+    <string name="lockscreen_clock_selection_digital_bold">数字 (粗体)</string>
+    <string name="lockscreen_clock_selection_analog">指针</string>
+    <string name="lockscreen_clock_selection_analog_deadpool">Analog (deadpool)</string>
+    <string name="lockscreen_clock_selection_sammy">Sammy</string>
+    <string name="lockscreen_clock_selection_sammy_bold">Sammy (bold)</string>
+    <string name="hide_lockscreen_date_title">日期小部件</string>
+    <string name="hide_lockscreen_date_summary">在时钟小部件下方更改日期的可见性</string>
+    <string name="lockscreen_date_selection_title">日期样式</string>
+    <string name="lockscreen_date_selection_default">默认</string>
+    <string name="lockscreen_date_selection_str_box">半透明盒子</string>
+    <string name="lockscreen_date_selection_str_round">半透明盒子 (圆角)</string>
+    <string name="hide_lockscreen_alarm_title">闹钟文字</string>
+    <string name="hide_lockscreen_alarm_summary">更改闹钟文字在时钟小部件下方的可见性</string>
+
     <!-- Heads up timeout -->
     <string name="heads_up_time_out_title">超时</string>
     <string name="heads_up_time_out_summary">查看通知将显示为 <xliff:g id="number">%d</xliff:g> 秒</string>
