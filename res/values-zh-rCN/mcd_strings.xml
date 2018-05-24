@@ -117,4 +117,11 @@
     <string name="action_location_sensors_only_title">仅限设备</string>
     <string name="action_location_battery_saving_title">低耗电量</string>
     <string name="action_location_high_accuracy_title">高精确度</string>
+
+    <!-- Wallpaper tint -->
+    <string name="wallpaper_tint_power_menu">电源菜单背景色调</string>
+    <string name="wallpaper_tint_recents">最近任务背景色调</string>
+    <string name="wallpaper_tint_keyguard">锁屏背景色调</string>
+    <string name="wallpaper_tint_notification_shade">通知阴影色调</string>
+    <string name="wallpaper_tint_summary">根据主屏幕壁纸将背景色应用于背景</string>
 </resources>
