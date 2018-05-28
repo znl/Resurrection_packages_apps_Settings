@@ -21,10 +21,54 @@
     <string name="value_equals_default">自动</string>
     <string name="show_light_on_zen_title">勿扰模式下灯光闪烁</string>
 
-    <!-- Hide Lockscreen clock, date, & alarm -->
+    <!-- Lockscreen customization -->
+    <string name="mcd_clock_customization">自定义时钟</string>
+    <string name="mcd_date_customization">自定义日期</string>
+
+    <!-- Lock Clock Fonts -->
+    <string name="lock_clock_font_title">字体</string>
+    <string name="lock_clock_font_summary">更改锁屏时钟小部件的默认字体</string>
+    <string name="lock_clock_font_dialog_title">选择锁屏时钟字体</string>
+    <string name="lock_clock_font_stock">正常 (默认)</string>
+    <string name="lock_clock_font_bold">粗体</string>
+    <string name="lock_clock_font_italic">斜体</string>
+    <string name="lock_clock_font_bold_italic">粗斜体</string>
+    <string name="lock_clock_font_light_italic">细斜体</string>
+    <string name="lock_clock_font_thin_italic">瘦斜体</string>
+    <string name="lock_clock_font_light">细体</string>
+    <string name="lock_clock_font_thin">瘦体</string>
+    <string name="lock_clock_font_condensed_normal">Condensed</string>
+    <string name="lock_clock_font_condensed_italic">Condensed 斜体</string>
+    <string name="lock_clock_font_condensed_bold">Condensed 粗体</string>
+    <string name="lock_clock_font_condensed_bold_italic">Condensed 粗斜体</string>
+    <string name="lock_clock_font_condensed_light">Condensed 细体</string>
+    <string name="lock_clock_font_condensed_light_italic">Condensed 细斜体</string> 
+    <string name="lock_clock_font_medium_normal">中等</string>
+    <string name="lock_clock_font_medium_italic">中等斜体</string>
+    <string name="lock_clock_font_black">黑体</string>
+    <string name="lock_clock_font_black_italic">黑斜体</string> 
+    <string name="lock_clock_font_dancingscript">DancingScript</string>
+    <string name="lock_clock_font_dancingscript_bold">DancingScript 粗体</string>
+    <string name="lock_clock_font_comingsoon">ComingSoon</string>
+    <string name="lock_clock_font_notoserif">NotoSerif 标准</string>
+    <string name="lock_clock_font_notoserif_italic">NotoSerif 斜体</string>
+    <string name="lock_clock_font_notoserif_bold">NotoSerif 粗体</string>
+    <string name="lock_clock_font_notoserif_bold_italic">NotoSerif 粗斜体</string>
+    <string name="lock_clock_font_gobold">GoBold Light</string>
+    <string name="lock_clock_font_roadrage">Road Rage</string>
+    <string name="lock_clock_font_snowstorm">Snowstorm</string>
+    <string name="lock_clock_font_googlesans">Google Sans</string>
+    <string name="lock_clock_font_themeable">Themeable (or VCR OSD Mono)</string>
+
+    <string name="lockdate_font_size_title">字体大小</string>
+    <string name="lockclock_font_size_title">字体大小</string>
+
+    <string name="lock_date_font_title">字体</string>
+    <string name="lock_date_font_summary">更改锁屏日期小部件的默认字体</string>
+    <string name="lock_date_font_dialog_title">选择锁屏日期字体</string>
+
+    <!-- DU Lock Clock Style -->
     <string name="lockscreen_items_other">其他</string>
-    <string name="hide_lockscreen_clock_title">时钟部件</string>
-    <string name="hide_lockscreen_clock_summary">更改时钟小部件的可见性</string>
     <string name="lockscreen_clock_selection_title">时钟样式</string>
     <string name="lockscreen_clock_selection_digital">默认</string>
     <string name="lockscreen_clock_selection_digital_bold">数字 (粗体)</string>
@@ -32,14 +76,10 @@
     <string name="lockscreen_clock_selection_analog_deadpool">Analog (deadpool)</string>
     <string name="lockscreen_clock_selection_sammy">Sammy</string>
     <string name="lockscreen_clock_selection_sammy_bold">Sammy (bold)</string>
-    <string name="hide_lockscreen_date_title">日期小部件</string>
-    <string name="hide_lockscreen_date_summary">在时钟小部件下方更改日期的可见性</string>
     <string name="lockscreen_date_selection_title">日期样式</string>
     <string name="lockscreen_date_selection_default">默认</string>
     <string name="lockscreen_date_selection_str_box">半透明盒子</string>
     <string name="lockscreen_date_selection_str_round">半透明盒子 (圆角)</string>
-    <string name="hide_lockscreen_alarm_title">闹钟文字</string>
-    <string name="hide_lockscreen_alarm_summary">更改闹钟文字在时钟小部件下方的可见性</string>
 
     <!-- Heads up timeout -->
     <string name="heads_up_time_out_title">超时</string>

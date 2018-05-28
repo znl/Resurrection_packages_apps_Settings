@@ -32,45 +32,99 @@
         android:title="@string/lockscreen_media_art_title"
         android:defaultValue="true" />
 
-    <com.android.settings.rr.Preferences.SystemSettingSwitchPreference
-        android:key="hide_lockscreen_clock"
-        android:title="@string/hide_lockscreen_clock_title"
-        android:summary="@string/hide_lockscreen_clock_summary"
-        android:defaultValue="true" />
+    <PreferenceCategory
+        android:key="ls_clock_menu"
+        android:title="@string/mcd_clock_customization" >
 
-    <ListPreference
-        android:key="lockscreen_clock_selection"
-        android:title="@string/lockscreen_clock_selection_title"
-        android:entries="@array/lockscreen_clock_selection_entries"
-        android:entryValues="@array/lockscreen_clock_selection_values"
-        android:defaultValue="0"
-        android:dependency="hide_lockscreen_clock" />
+	    <com.android.settings.rr.Preferences.SystemSettingSwitchPreference
+		android:key="hide_lockscreen_clock"
+		android:title="@string/hide_lockscreen_clock_title"
+		android:summary="@string/hide_lockscreen_clock_summary"
+		android:defaultValue="true" />
+	    
+	    <ListPreference
+		android:key="lock_clock_fonts"
+		android:title="@string/lock_clock_font_title"
+		android:dialogTitle="@string/lock_clock_font_dialog_title"
+		android:entries="@array/lock_clock_fonts_entries"
+		android:entryValues="@array/lock_clock_fonts_values"
+		android:summary="@string/lock_clock_font_summary"
+		android:persistent="false"
+		android:dependency="hide_lockscreen_clock" />
 
-    <com.android.settings.rr.Preferences.SystemSettingSwitchPreference
-        android:key="hide_lockscreen_date"
-        android:title="@string/hide_lockscreen_date_title"
-        android:summary="@string/hide_lockscreen_date_summary"
-        android:defaultValue="true" />
+	    <com.android.settings.rr.Preferences.CustomSeekBarPreference
+		android:key="lockclock_font_size"
+		android:title="@string/lockclock_font_size_title"
+		android:max="108"
+		settings:min="50"
+		settings:units="dp"
+		android:persistent="false"
+		android:defaultValue="90"
+		android:dependency="hide_lockscreen_clock" />
 
-    <ListPreference
-        android:key="lockscreen_date_selection"
-        android:title="@string/lockscreen_date_selection_title"
-        android:entries="@array/lockscreen_date_selection_entries"
-        android:entryValues="@array/lockscreen_date_selection_values"
-        android:defaultValue="0"
-        android:dependency="hide_lockscreen_date" />
+	    <ListPreference
+		android:key="lockscreen_clock_selection"
+		android:title="@string/lockscreen_clock_selection_title"
+		android:entries="@array/lockscreen_clock_selection_entries"
+		android:entryValues="@array/lockscreen_clock_selection_values"
+		android:defaultValue="0"
+		android:dependency="hide_lockscreen_clock" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="ls_date_menu"
+        android:title="@string/mcd_date_customization" >
+
+	    <com.android.settings.rr.Preferences.SystemSettingSwitchPreference
+		android:key="hide_lockscreen_date"
+		android:title="@string/hide_lockscreen_date_title"
+		android:summary="@string/hide_lockscreen_date_summary"
+		android:defaultValue="true" />
+
+	    <ListPreference
+		android:key="lock_date_fonts"
+		android:title="@string/lock_date_font_title"
+		android:dialogTitle="@string/lock_date_font_dialog_title"
+		android:summary="@string/lock_date_font_summary"
+		android:entries="@array/lock_clock_fonts_entries"
+		android:entryValues="@array/lock_clock_fonts_values"
+		android:persistent="false"
+		android:dependency="hide_lockscreen_date" />
+
+	    <com.android.settings.rr.Preferences.CustomSeekBarPreference
+		android:key="lockdate_font_size"
+		android:title="@string/lockdate_font_size_title"
+		android:max="25"
+		settings:min="1"
+		settings:units="sp"
+		android:defaultValue="24"
+		android:persistent="false"
+		android:dependency="hide_lockscreen_date" />
+
+	    <ListPreference
+		android:key="lockscreen_date_selection"
+		android:title="@string/lockscreen_date_selection_title"
+		android:entries="@array/lockscreen_date_selection_entries"
+		android:entryValues="@array/lockscreen_date_selection_values"
+		android:defaultValue="0"
+		android:dependency="hide_lockscreen_date" />
+
+    </PreferenceCategory>
 
     <com.android.settings.rr.Preferences.SystemSettingSwitchPreference
         android:key="hide_lockscreen_alarm"
         android:title="@string/hide_lockscreen_alarm_title"
         android:summary="@string/hide_lockscreen_alarm_summary"
-        android:defaultValue="true" />
+        android:defaultValue="true"
+	settings:allowDividerAbove="true" />
 
     <com.android.settings.rr.Preferences.SystemSettingSwitchPreference
         android:key="lock_screen_custom_notif"
         android:title="@string/lockscreen_maxnotif_title"
         android:summary="@string/lockscreen_maxnotif_summary"
-        android:defaultValue="false" />
+        android:defaultValue="false"
+	settings:allowDividerAbove="true" />
 
     <com.android.settings.rr.Preferences.SystemSettingSeekBarPreference
         android:key="lockscreen_max_notif_config"
