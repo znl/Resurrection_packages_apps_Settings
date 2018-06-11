@@ -112,6 +112,13 @@
     <string name="enable_mtp_dirtyhack_title">Transfer Files instead of Charging</string>
     <string name="enable_mtp_dirtyhack_summary">Default to MTP instead of Charging when connected to a PC</string>
 
+    <!-- Rounded Ui -->
+    <string name="corners_category">Corners</string>
+    <string name="corner_radius">Rounded Corner Radius</string>
+    <string name="content_padding">Corner Content Padding</string>
+    <string name="corner_fwvals">Use framework values</string>
+    <string name="corner_fwvals_summary">Useful if the device actually has rounded corners</string>
+
     <!-- Wakelock blocker -->
     <string name="wakelock_blocker_title">Wakelock Blocker</string>
     <string name="wakelock_blocker_summary">Block system wakelocks</string>

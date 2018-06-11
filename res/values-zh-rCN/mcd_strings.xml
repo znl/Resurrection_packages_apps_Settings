@@ -112,6 +112,13 @@
     <string name="enable_mtp_dirtyhack_title">MTP 代替充电</string>
     <string name="enable_mtp_dirtyhack_summary">当连接PC时启用MTP文件传输代替充电</string>
 
+    <!-- Rounded Ui -->
+    <string name="corners_category">圆角</string>
+    <string name="corner_radius">圆角半径</string>
+    <string name="content_padding">圆角内容填充</string>
+    <string name="corner_fwvals">使用框架值</string>
+    <string name="corner_fwvals_summary">如果设备实际上有圆角，则很有用</string>
+
     <!-- Wakelock blocker -->
     <string name="wakelock_blocker_title">唤醒拦截器</string>
     <string name="wakelock_blocker_summary">阻止系统唤醒</string>
