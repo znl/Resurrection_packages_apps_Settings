@@ -35,12 +35,14 @@
     <PreferenceScreen
             android:key="wakelock_blocker"
             android:title="@string/wakelock_blocker_title"
+	    android:icon="@drawable/ic_wakelock_blocker"
 	    android:summary="@string/wakelock_blocker_summary"
             android:fragment="com.android.settings.rr.fragments.WakeLockBlocker" />
 
     <PreferenceScreen
             android:id="@+id/alarm_blocker"
             android:title="@string/alarm_blocker"
+	    android:icon="@drawable/ic_alarm_blocker"
 	    android:summary="@string/alarm_blocker_summary"
             android:fragment="com.android.settings.rr.fragments.AlarmBlocker" />
 
