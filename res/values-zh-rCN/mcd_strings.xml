@@ -145,8 +145,12 @@
     <string name="disabled_entry">禁用</string>
     <string name="action_save">保存</string>
 
-    <!-- System Events -->
+    <!-- Omni Event Service -->
+    <string name="unit_sec">秒</string>
+    <string name="unit_msec">毫秒</string>
+    <string name="unit_minutes">分钟</string>
     <string name="event_service_settings_title">事件</string>
+    <string name="event_service_settings_summary">事件设置菜单</string>
     <string name="category_media_player_title">媒体播放器</string>
     <string name="bt_a2dp_connect_app_list_title">蓝牙 A2DP 连接</string>
     <string name="headset_connect_app_list_title">有线耳机连接</string>
@@ -162,8 +166,6 @@
     <string name="headset_connect_app_list_summary">连接有线耳机时要列出的应用程序(s)</string>
     <string name="app_chooser_left">左侧</string>
     <string name="app_chooser_right">右侧</string>
-    <string name="unit_sec">秒</string>
-    <string name="unit_minutes">分钟</string>
     <string name="app_chooser_timeout_title">应用程序选择器对话超时</string>
     <string name="app_chooser_position_title">应用程序选择器对话框位置</string>
     <string name="wired_events_threshold_title">有线耳机事件阈值</string>
@@ -171,17 +173,6 @@
     <string name="category_network_title">网络</string>
     <string name="disable_wifi_threshold_title">自动关闭WiFi</string>
     <string name="disable_wifi_threshold_summary">如果从网络断开连接时停用WiFi，几分钟后我们不会重新连接</string>
-    <string name="tagged_networks_summary">%1$d 网络标记</string>
-    <string name="home_networks_title">家庭网络</string>
-    <string name="tagged_networks_title">Tagged networks</string>
-    <string name="home_network_events_summary">家庭网络事件</string>
-    <string name="home_connect_actions_title">连接到家庭网络时</string>
-    <string name="omni_actions_summary">%1$d 选择的操作</string>
-    <string name="home_disconnect_actions_title">从家庭网络断开连接时</string>
-    <string name="work_networks_title">工作网络</string>
-    <string name="work_network_events_summary">工作网络事件</string>
-    <string name="work_connect_actions_title">连接到工作网络时</string>
-    <string name="work_disconnect_actions_title">从工作网络断开连接时</string>
 
     <!-- Omni actions -->
     <string name="action_location_off_title">关闭定位</string>

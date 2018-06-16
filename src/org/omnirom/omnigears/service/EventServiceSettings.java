@@ -29,7 +29,6 @@ import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
-import android.text.TextUtils;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.R;
@@ -42,16 +41,15 @@ import org.omnirom.omnigears.preference.ScrollAppsViewPreference;
 import org.omnirom.omnigears.preference.SeekBarPreference;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class EventServiceSettings extends SettingsPreferenceFragment implements OnPreferenceChangeListener, Indexable {
     public static final String EVENTS_PREFERENCES_NAME = "event_service";
 
-    public static final String EVENT_A2DP_CONNECT = "bt_a2dp_connect_app_string";
-    public static final String EVENT_WIRED_HEADSET_CONNECT = "headset_connect_app_string";
+    public static final String EVENT_A2DP_CONNECT = "bt_a2dp_connect_app_list";
+    public static final String EVENT_WIRED_HEADSET_CONNECT = "headset_connect_app_list";
     public static final String EVENT_SERVICE_ENABLED = "event_service_enabled";
     public static final String EVENT_MEDIA_PLAYER_START = "media_player_autostart";
     public static final String EVENT_MUSIC_ACTIVE = "media_player_music_active";
@@ -64,31 +62,9 @@ public class EventServiceSettings extends SettingsPreferenceFragment implements 
     public static final String DISABLE_WIFI_THRESHOLD = "disable_wifi_threshold";
 
     // -- For backward compatibility
-    public static final String OLD_EVENT_A2DP_CONNECT = "bt_a2dp_connect_app_list";
-    public static final String OLD_EVENT_WIRED_HEADSET_CONNECT = "headset_connect_app_list";
+    public static final String OLD_EVENT_A2DP_CONNECT = "bt_a2dp_connect_app";
+    public static final String OLD_EVENT_WIRED_HEADSET_CONNECT = "headset_connect_app";
     // -- End backward compatibility
-
-    public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
-            new BaseSearchIndexProvider() {
-                @Override
-                public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
-                                                                            boolean enabled) {
-                    ArrayList<SearchIndexableResource> result =
-                            new ArrayList<SearchIndexableResource>();
-
-                    SearchIndexableResource sir = new SearchIndexableResource(context);
-                    sir.xmlResId = R.xml.event_service_settings;
-                    result.add(sir);
-
-                    return result;
-                }
-
-                @Override
-                public List<String> getNonIndexableKeys(Context context) {
-                    ArrayList<String> result = new ArrayList<String>();
-                    return result;
-                }
-            };
 
     private AppMultiSelectListPreference mA2DPappSelect;
     private AppMultiSelectListPreference mWiredHeadsetAppSelect;
@@ -121,12 +97,12 @@ public class EventServiceSettings extends SettingsPreferenceFragment implements 
         addPreferencesFromResource(R.xml.event_service_settings);
 
         // -- For backward compatibility
-        if (getPrefs().contains(OLD_EVENT_A2DP_CONNECT)) {
-            Set<String> old_value = getPrefs().getStringSet(OLD_EVENT_A2DP_CONNECT, null);
+        String old_value = getPrefs().getString(OLD_EVENT_A2DP_CONNECT, null);
+        if (old_value != null) {
             fixOldPreference(OLD_EVENT_A2DP_CONNECT, EVENT_A2DP_CONNECT, old_value);
         }
-        if (getPrefs().contains(OLD_EVENT_WIRED_HEADSET_CONNECT)) {
-            Set<String> old_value = getPrefs().getStringSet(OLD_EVENT_WIRED_HEADSET_CONNECT, null);
+        old_value = getPrefs().getString(OLD_EVENT_WIRED_HEADSET_CONNECT, null);
+        if (old_value != null) {
             fixOldPreference(OLD_EVENT_WIRED_HEADSET_CONNECT, EVENT_WIRED_HEADSET_CONNECT, old_value);
         }
         // -- End backward compatibility
@@ -160,7 +136,7 @@ public class EventServiceSettings extends SettingsPreferenceFragment implements 
         mChooserTimeout.setValue(getPrefs().getInt(EventServiceSettings.APP_CHOOSER_TIMEOUT, 15));
         mChooserTimeout.setOnPreferenceChangeListener(this);
 
-	mDisableWifi = (SeekBarPreference) findPreference(DISABLE_WIFI_THRESHOLD);
+        mDisableWifi = (SeekBarPreference) findPreference(DISABLE_WIFI_THRESHOLD);
         mDisableWifi.setValue(getPrefs().getInt(EventServiceSettings.DISABLE_WIFI_THRESHOLD, 0));
         mDisableWifi.setOnPreferenceChangeListener(this);
 
@@ -169,70 +145,62 @@ public class EventServiceSettings extends SettingsPreferenceFragment implements 
         mWiredThresholdTimeout.setOnPreferenceChangeListener(this);
 
         mA2DPappSelect = (AppMultiSelectListPreference) findPreference(EVENT_A2DP_CONNECT);
-        String value = getPrefs().getString(EVENT_A2DP_CONNECT, null);
-        List<String> valueList = new ArrayList<String>();
-        if (!TextUtils.isEmpty(value)) {
-            valueList.addAll(Arrays.asList(value.split(":")));
-        }
-        mA2DPappSelect.setValues(valueList);
+        Set<String> value = getPrefs().getStringSet(EVENT_A2DP_CONNECT, null);
+        if (value != null) mA2DPappSelect.setValues(value);
         mA2DPappSelect.setOnPreferenceChangeListener(this);
 
         mA2DPApps = (ScrollAppsViewPreference) findPreference(A2DP_APP_LIST);
-        if (TextUtils.isEmpty(value)) {
+        if (value == null) {
             mA2DPApps.setVisible(false);
         } else {
             mA2DPApps.setVisible(true);
-            mA2DPApps.setValues(valueList);
+            mA2DPApps.setValues(value);
         }
 
         mWiredHeadsetAppSelect = (AppMultiSelectListPreference) findPreference(EVENT_WIRED_HEADSET_CONNECT);
-        value = getPrefs().getString(EVENT_WIRED_HEADSET_CONNECT, null);
-        valueList = new ArrayList<String>();
-        if (!TextUtils.isEmpty(value)) {
-            valueList.addAll(Arrays.asList(value.split(":")));
-        }
-        mWiredHeadsetAppSelect.setValues(valueList);
+        value = getPrefs().getStringSet(EVENT_WIRED_HEADSET_CONNECT, null);
+        if (value != null) mWiredHeadsetAppSelect.setValues(value);
         mWiredHeadsetAppSelect.setOnPreferenceChangeListener(this);
 
         mHeadsetApps = (ScrollAppsViewPreference) findPreference(HEADSET_APP_LIST);
-        if (TextUtils.isEmpty(value)) {
+        if (value == null) {
             mHeadsetApps.setVisible(false);
         } else {
-            mHeadsetApps.setValues(valueList);
+            mHeadsetApps.setValues(value);
             mHeadsetApps.setVisible(true);
         }
     }
 
-    private void fixOldPreference(String old_event, String new_event, Set<String> value) {
-        getPrefs().edit().putString(new_event, TextUtils.join(":", value)).commit();
-        getPrefs().edit().remove(old_event).commit();
+    private void fixOldPreference(String old_event, String new_event, String value) {
+        Set<String> mValues = new HashSet<String>();
+        mValues.add(value);
+        getPrefs().edit().putStringSet(new_event, mValues).commit();
+        getPrefs().edit().putString(old_event, null).commit();
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         if (preference == mA2DPappSelect) {
-            Collection<String> value = (Collection<String>) newValue;
+            Set<String> value = (Set<String>) newValue;
+
+            getPrefs().edit().putStringSet(EVENT_A2DP_CONNECT, value).commit();
 
             mA2DPApps.setVisible(false);
-            if (value != null && !value.isEmpty()) {
-                getPrefs().edit().putString(EVENT_A2DP_CONNECT, TextUtils.join(":", value)).commit();
+            if (value != null) {
                 mA2DPApps.setValues(value);
                 mA2DPApps.setVisible(true);
-	    } else {
-                getPrefs().edit().putString(EVENT_A2DP_CONNECT, null).commit();
             }
 
             return true;
         } else if (preference == mWiredHeadsetAppSelect) {
-            Collection<String> value = (Collection<String>) newValue;
+            Set<String> value = (Set<String>) newValue;
+
+            getPrefs().edit().putStringSet(EVENT_WIRED_HEADSET_CONNECT, value).commit();
 
             mHeadsetApps.setVisible(false);
-            if (value != null && !value.isEmpty()) {
-                getPrefs().edit().putString(EVENT_WIRED_HEADSET_CONNECT, TextUtils.join(":", value)).commit();
+            if (value != null) {
                 mHeadsetApps.setValues(value);
                 mHeadsetApps.setVisible(true);
-	    } else {
-                getPrefs().edit().putString(EVENT_WIRED_HEADSET_CONNECT, null).commit();
             }
 
             return true;
@@ -279,7 +247,7 @@ public class EventServiceSettings extends SettingsPreferenceFragment implements 
             int value = ((int) newValue);
             getPrefs().edit().putInt(WIRED_EVENTS_THRESHOLD, value).commit();
             return true;
-	} else if (preference == mDisableWifi) {
+        } else if (preference == mDisableWifi) {
             int value = ((int) newValue);
             getPrefs().edit().putInt(DISABLE_WIFI_THRESHOLD, value).commit();
             return true;
@@ -299,5 +267,27 @@ public class EventServiceSettings extends SettingsPreferenceFragment implements 
     private boolean isServiceRunning() {
         return EventService.isRunning();
     }
+
+    public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
+            new BaseSearchIndexProvider() {
+                @Override
+                public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
+                                                                            boolean enabled) {
+                    ArrayList<SearchIndexableResource> result =
+                            new ArrayList<SearchIndexableResource>();
+
+                    SearchIndexableResource sir = new SearchIndexableResource(context);
+                    sir.xmlResId = R.xml.event_service_settings;
+                    result.add(sir);
+
+                    return result;
+                }
+
+                @Override
+                public List<String> getNonIndexableKeys(Context context) {
+                    ArrayList<String> result = new ArrayList<String>();
+                    return result;
+                }
+            };
 }
 

@@ -145,8 +145,12 @@
     <string name="disabled_entry">Disabled</string>
     <string name="action_save">Save</string>
 
-    <!-- System Events -->
+    <!-- Omni Event Service -->
+    <string name="unit_sec">sec</string>
+    <string name="unit_msec">ms</string>
+    <string name="unit_minutes">min</string>
     <string name="event_service_settings_title">Events</string>
+    <string name="event_service_settings_summary">OmniEvents Setting Menu</string>
     <string name="category_media_player_title">Media player</string>
     <string name="bt_a2dp_connect_app_list_title">Bluetooth A2DP connect</string>
     <string name="headset_connect_app_list_title">Wired headset connect</string>
@@ -162,26 +166,13 @@
     <string name="headset_connect_app_list_summary">App(s) to be listed when a wired headset is connected</string>
     <string name="app_chooser_left">Left</string>
     <string name="app_chooser_right">Right</string>
-    <string name="unit_sec">sec</string>
-    <string name="unit_minutes">min</string>
     <string name="app_chooser_timeout_title">App chooser dialog timeout</string>
     <string name="app_chooser_position_title">App chooser dialog position</string>
     <string name="wired_events_threshold_title">Wired headset event threshold</string>
     <string name="wired_events_threshold_summary">Ignore headset events if they are within threshold time</string>
-    <string name="category_wifi_title">Wi\u2011Fi</string>
+    <string name="category_network_title">Network</string>
     <string name="disable_wifi_threshold_title">Turn off Wi\u2011Fi automatically</string>
     <string name="disable_wifi_threshold_summary">Deactivate Wi\u2011Fi if, when disconnecting from a network, we do not reconnect after a few minutes</string>
-    <string name="tagged_networks_summary">%1$d networks tagged</string>
-    <string name="home_networks_title">Home network</string>
-    <string name="tagged_networks_title">Tagged networks</string>
-    <string name="home_network_events_summary">Home network events</string>
-    <string name="home_connect_actions_title">When connect to Home</string>
-    <string name="omni_actions_summary">%1$d actions selected</string>
-    <string name="home_disconnect_actions_title">When disconnect from Home</string>
-    <string name="work_networks_title">Work network</string>
-    <string name="work_network_events_summary">Work network events</string>
-    <string name="work_connect_actions_title">When connect to Work</string>
-    <string name="work_disconnect_actions_title">When disconnect from Work</string>
 
     <!-- Omni actions -->
     <string name="action_location_off_title">Location off</string>

@@ -39,9 +39,10 @@ import com.android.settings.R;
 import com.android.settingslib.CustomDialogPreference;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class AppMultiSelectListPreference extends CustomDialogPreference {
     private static final String TAG = "AppMultiSelectList";
@@ -49,7 +50,7 @@ public class AppMultiSelectListPreference extends CustomDialogPreference {
 
     private final List<PackageItem> mPackageInfoList = new ArrayList<PackageItem>();
     private AppListAdapter mAdapter;
-    private List<String> mValues = new ArrayList<String>();
+    private Set<String> mValues = new HashSet<String>();
     private PackageManager mPm;
 
     public AppMultiSelectListPreference(Context context) {
@@ -86,12 +87,12 @@ public class AppMultiSelectListPreference extends CustomDialogPreference {
         setNegativeButtonText(android.R.string.cancel);
     }
 
-    public void setValues(Collection<String> values) {
+    public void setValues(Set<String> values) {
         mValues.clear();
         mValues.addAll(values);
     }
 
-    public Collection<String> getValues() {
+    public Set<String> getValues() {
         return mValues;
     }
 
@@ -242,3 +243,5 @@ public class AppMultiSelectListPreference extends CustomDialogPreference {
         return appIcon;
     }
 }
+
+

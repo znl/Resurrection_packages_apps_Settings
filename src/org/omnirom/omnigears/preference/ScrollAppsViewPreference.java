@@ -32,15 +32,14 @@ import android.widget.LinearLayout;
 
 import com.android.settings.R;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class ScrollAppsViewPreference extends Preference {
     private static final String TAG = "ScrollAppsPreference";
 
     private Context mContext;
-    private List<String> mValues = new ArrayList<String>();
+    private Set<String> mValues = new HashSet<String>();
     private PackageManager mPm;
     private LayoutInflater mInflater;
 
@@ -59,7 +58,7 @@ public class ScrollAppsViewPreference extends Preference {
         initPreference(context);
     }
 
-    public void setValues(Collection<String> values) {
+    public void setValues(Set<String> values) {
         mValues.clear();
         mValues.addAll(values);
     }
@@ -91,3 +90,4 @@ public class ScrollAppsViewPreference extends Preference {
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 }
+

@@ -23,6 +23,9 @@ import android.bluetooth.BluetoothA2dp;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothProfile;
+import android.net.wifi.WifiManager;
+import android.net.wifi.WifiInfo;
+import android.os.AsyncTask;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -37,10 +40,6 @@ import android.media.AudioManager;
 import android.media.AudioSystem;
 import android.media.IAudioService;
 import android.media.session.MediaSessionLegacyHelper;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
-import android.net.wifi.WifiSsid;
-import android.os.AsyncTask;
 import android.os.Binder;
 import android.os.Handler;
 import android.os.IBinder;
@@ -48,7 +47,6 @@ import android.os.PowerManager;
 import android.os.ServiceManager;
 import android.os.SystemClock;
 import android.os.UserHandle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.Gravity;
@@ -62,33 +60,29 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.android.settings.R;
-import org.omnirom.omnigears.actions.OmniAction;
-import org.omnirom.omnigears.actions.OmniActionsInflate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+
+import java.util.Set;
 
 
 public class EventService extends Service {
     private static final String TAG = "OmniEventService";
     private static final boolean DEBUG = false;
+    private PowerManager.WakeLock mWakeLock;
+    private static boolean mIsRunning;
+    private static boolean mWiredHeadsetConnected;
+    private static boolean mA2DPConnected;
     private static final int ANIM_DURATION = 300;
     private static final int LEFT = 0;
     private static final int RIGHT = 1;
     private static final Interpolator FAST_OUT_SLOW_IN = new PathInterpolator(0.4f, 0f, 0.2f, 1f);
-    private static boolean mIsRunning;
-    private static boolean mWiredHeadsetConnected;
-    private static boolean mA2DPConnected;
     private static boolean mOverlayShown;
     private static long mLastUnplugEventTimestamp;
-    private final LocalBinder mBinder = new LocalBinder();
-    private PowerManager.WakeLock mWakeLock;
+
     private WifiManager mWifiManager;
     private WindowManager mWindowManager;
     private View mFloatingWidget = null;
-    private List<String> appList = null;
+    private Set<String> appList = null;
     private Handler mHandler = new Handler();
-    private String lastSSID = null;
     private PackageManager mPm;
     private int chooserPosition;
     private int mOverlayWidth;
@@ -102,6 +96,7 @@ public class EventService extends Service {
             }
         }
     };
+
     private BroadcastReceiver mStateListener = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -128,8 +123,8 @@ public class EventService extends Service {
                             if (DEBUG) Log.d(TAG, "BluetoothProfile.STATE_CONNECTED = true");
 
                             if (!(disableIfMusicActive && isMusicActive())) {
-                                appList = getAvailableActionList(EventServiceSettings.EVENT_A2DP_CONNECT);
-                                if (appList.size() != 0) {
+                                appList = getPrefs(context).getStringSet(EventServiceSettings.EVENT_A2DP_CONNECT, null);
+                                if (appList != null) {
                                     if (autoRun && appList.size() == 1) {
                                         openApp(appList.iterator().next(), context);
                                     } else {
@@ -150,17 +145,17 @@ public class EventService extends Service {
                             if (mLastUnplugEventTimestamp != 0) {
                                 final long eventDelta = System.currentTimeMillis() - mLastUnplugEventTimestamp;
                                 if (eventDelta < threshold * 1000) {
-                                    if (DEBUG)
+                                    if (DEBUG) 
                                         Log.d(TAG, "Ignore AudioManager.ACTION_HEADSET_PLUG = " + useHeadset + " delta = " + eventDelta);
-                                     return;
+                                    return;
                                 }
                             }
                             mWiredHeadsetConnected = true;
                             if (DEBUG) Log.d(TAG, "AudioManager.ACTION_HEADSET_PLUG = true");
 
                             if (!(disableIfMusicActive && isMusicActive())) {
-                                appList = getAvailableActionList(EventServiceSettings.EVENT_WIRED_HEADSET_CONNECT);
-                                if (appList.size() != 0) {
+                                appList = getPrefs(context).getStringSet(EventServiceSettings.EVENT_WIRED_HEADSET_CONNECT, null);
+                                if (appList != null) {
                                     if (autoRun && appList.size() == 1) {
                                         openApp(appList.iterator().next(), context);
                                     } else {
@@ -174,137 +169,43 @@ public class EventService extends Service {
                             mLastUnplugEventTimestamp = System.currentTimeMillis();
                         }
                         break;
-		    case WifiManager.NETWORK_STATE_CHANGED_ACTION:
+                    case WifiManager.NETWORK_STATE_CHANGED_ACTION:
                         if (DEBUG) Log.d(TAG, "WifiManager.NETWORK_STATE_CHANGED_ACTION = true");
 
-                        if (mWifiManager.isWifiEnabled()) {
-                            String ssid = getCurrentSSID();
-                            if (ssid == null) {
-                                if (DEBUG) Log.d(TAG, "LASTSSID: " + lastSSID);
-                                execOnDisconnectActions(context);
-                                shouldDisableWIFI(context);
-                            } else {
-                                if (DEBUG) Log.d(TAG, "SSID: " + ssid);
-                                execOnConnectActions(context, ssid);
-                            }
-                            lastSSID = ssid;
-                        } else {
-                            if (lastSSID != null) {
-                                if (DEBUG) Log.d(TAG, "LASTSSID: " + lastSSID);
-                                execOnDisconnectActions(context);
-                                lastSSID = null;
-                            }
+                        int timeout = getPrefs(context).getInt(EventServiceSettings.DISABLE_WIFI_THRESHOLD, 0);
+                        if ((timeout > 0) && wifiEnabledAndNotConnected() && !mDisableWifiIsRunning) {
+                            if (DEBUG) Log.d(TAG, "DISABLE_WIFI_THRESHOLD true");
+                            mDisableWifiIsRunning = true;
+                            final Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    mDisableWifiIsRunning = false;
+                                    new AsyncTask<Void, Void, Void>() {
+                                        @Override
+                                        protected Void doInBackground(Void... args) {
+                                            if (wifiEnabledAndNotConnected()) {
+                                                mWifiManager.setWifiEnabled(false);
+                                            }
+                                            return null;
+                                        }
+                                    }.execute();
+                                }
+                            }, timeout * 60000);
                         }
                         break;
                 }
+
             } finally {
                 mWakeLock.release();
             }
         }
     };
 
-    public static boolean isRunning() {
-        return mIsRunning;
-    }
-
-    private String getCurrentSSID() {
-        /*
-         * WifiInfo.getSSID retunrs a strings like "<name>"
-         * Two options, trim " from returned string or
-         * do that 'override'
-         */
+    private boolean wifiEnabledAndNotConnected() {
+        if (!mWifiManager.isWifiEnabled()) return false;
         WifiInfo wifiInfo = mWifiManager.getConnectionInfo();
-        if (wifiInfo.getNetworkId() == -1) return null;
-        WifiSsid ssid = wifiInfo.getWifiSsid();
-        if (ssid != null) {
-            String unicode = ssid.toString();
-            return !TextUtils.isEmpty(unicode) ? unicode : ssid.getHexString();
-        } else {
-            return "<unknown ssid>";
-        }
-    }
-
-    private void shouldDisableWIFI(Context context) {
-        int timeout = getPrefs(context).getInt(EventServiceSettings.DISABLE_WIFI_THRESHOLD, 0);
-        if ((timeout > 0) && !mDisableWifiIsRunning) {
-            if (DEBUG) Log.d(TAG, "DISABLE_WIFI_THRESHOLD true");
-            mDisableWifiIsRunning = true;
-            final Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    mDisableWifiIsRunning = false;
-                    new AsyncTask<Void, Void, Void>() {
-                        @Override
-                        protected Void doInBackground(Void... args) {
-                            if (mWifiManager.isWifiEnabled() && getCurrentSSID() == null) {
-                                mWifiManager.setWifiEnabled(false);
-                            }
-                            return null;
-                        }
-                    }.execute();
-                }
-            }, timeout * 60000);
-        }
-    }
-
-    private void execOnConnectActions(Context context, String ssid) {
-        boolean isHome = isTaggedNetwork(ssid, getPrefs(context).getString(HomeNetworkEventsSettings.HOME_TAGGED_NETWORKS, null));
-        if (isHome) {
-            if (DEBUG) Log.d(TAG, "Is HOME");
-            execOmniActions(context, getPrefs(context).getString(HomeNetworkEventsSettings.HOME_CONNECT_ACTIONS, null));
-            return;
-        }
-
-        boolean isWork = isTaggedNetwork(ssid, getPrefs(context).getString(WorkNetworkEventsSettings.WORK_TAGGED_NETWORKS, null));
-        if (isWork) {
-            if (DEBUG) Log.d(TAG, "Is WORK");
-            execOmniActions(context, getPrefs(context).getString(WorkNetworkEventsSettings.WORK_CONNECT_ACTIONS, null));
-            return;
-        }
-    }
-
-    private void execOnDisconnectActions(Context context) {
-        boolean isHome = isTaggedNetwork(lastSSID, getPrefs(context).getString(HomeNetworkEventsSettings.HOME_TAGGED_NETWORKS, null));
-        if (isHome) {
-            if (DEBUG) Log.d(TAG, "Is HOME");
-            execOmniActions(context, getPrefs(context).getString(HomeNetworkEventsSettings.HOME_DISCONNECT_ACTIONS, null));
-            return;
-        }
-
-        boolean isWork = isTaggedNetwork(lastSSID, getPrefs(context).getString(WorkNetworkEventsSettings.WORK_TAGGED_NETWORKS, null));
-        if (isWork) {
-            if (DEBUG) Log.d(TAG, "Is WORK");
-            execOmniActions(context, getPrefs(context).getString(WorkNetworkEventsSettings.WORK_DISCONNECT_ACTIONS, null));
-            return;
-        }
-    }
-
-    private boolean isTaggedNetwork(String ssid, String network_list) {
-        if (DEBUG) Log.d(TAG, "Is tagged?: " + ssid);
-        if (DEBUG) Log.d(TAG, "Tagged list: " + network_list);
-        if (TextUtils.isEmpty(ssid) || TextUtils.isEmpty(network_list)) return false;
-        List<String> valueList = Arrays.asList(network_list.split(":"));
-        return valueList.contains(ssid);
-    }
-
-    private void execOmniActions(Context context, String actions_list) {
-        if (!TextUtils.isEmpty(actions_list)) {
-            List<String> valueList = Arrays.asList(actions_list.split(":"));
-            try {
-                ArrayList<OmniAction> actions = OmniActionsInflate.inflate(context, R.xml.omni_actions);
-                for (final OmniAction action : actions) {
-                    if (DEBUG) Log.d(TAG, "Action key: " + action.key);
-                    if (valueList.contains(action.key)) {
-                        if (DEBUG) Log.d(TAG, "Action executed: " + action.key);
-                        action.execute();
-                        continue;
-                    }
-                }
-            } catch (Exception e) {
-                if (DEBUG) Log.e(TAG, "Load omni actions ", e);
-            }
-        }
+        return (wifiInfo.getNetworkId() == -1);
     }
 
     public void openAppChooserDialog(final Context context) {
@@ -317,7 +218,7 @@ public class EventService extends Service {
             mOverlayShown = true;
 
             final LayoutInflater inflater = LayoutInflater.from(new ContextThemeWrapper(
-		    context, android.R.style.Theme_DeviceDefault_Light_Dialog));
+                context, android.R.style.Theme_DeviceDefault_Light_Dialog));
             mFloatingWidget = inflater.inflate(R.layout.layout_floating_widget, null);
 
             final WindowManager.LayoutParams params = new WindowManager.LayoutParams(
@@ -450,6 +351,14 @@ public class EventService extends Service {
         return false;
     }
 
+    public class LocalBinder extends Binder {
+        public EventService getService() {
+            return EventService.this;
+        }
+    }
+
+    private final LocalBinder mBinder = new LocalBinder();
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -462,7 +371,7 @@ public class EventService extends Service {
         mPm = getPackageManager();
         registerListener();
         mOverlayWidth = getOverlayWidth(this);
-	mWifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+        mWifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
     }
 
     @Override
@@ -492,7 +401,7 @@ public class EventService extends Service {
         filter.addAction(BluetoothAdapter.ACTION_STATE_CHANGED);
         filter.addAction(BluetoothA2dp.ACTION_CONNECTION_STATE_CHANGED);
         filter.addAction(AudioManager.ACTION_HEADSET_PLUG);
-	filter.addAction(WifiManager.NETWORK_STATE_CHANGED_ACTION);
+        filter.addAction(WifiManager.NETWORK_STATE_CHANGED_ACTION);
         this.registerReceiver(mStateListener, filter);
     }
 
@@ -503,6 +412,10 @@ public class EventService extends Service {
         } catch (Exception e) {
             Log.e(TAG, "unregisterListener", e);
         }
+    }
+
+    public static boolean isRunning() {
+        return mIsRunning;
     }
 
     private SharedPreferences getPrefs(Context context) {
@@ -554,28 +467,6 @@ public class EventService extends Service {
                         }
                     })
                     .start();
-        }
-    }
-
-    // filter out unresolvable (uninstalled) intents
-    private List<String> getAvailableActionList(String key) {
-        String value = getPrefs(this).getString(key, null);
-        List<String> valueList = new ArrayList<String>();
-        if (!TextUtils.isEmpty(value)) {
-            for (String intentUri : value.split(":")) {
-                Intent intent = createIntent(intentUri);
-                if (mPm.resolveActivity(intent, 0) != null) {
-                    valueList.add(intentUri);
-                }
-            }
-            if (DEBUG) Log.d(TAG, "getActionList valueList = " + valueList);
-        }
-        return valueList;
-    }
-
-    public class LocalBinder extends Binder {
-        public EventService getService() {
-            return EventService.this;
         }
     }
 }
