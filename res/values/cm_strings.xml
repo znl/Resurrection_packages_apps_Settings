@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
      Copyright (C) 2012-2016 The CyanogenMod Project
-     Copyright (C) 2017      The LineageOS Project
+     Copyright (C) 2017-2018 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -25,6 +25,12 @@
     <string name="show_dev_on_cm">You have enabled development settings!</string>
     <!-- [CHAR LIMIT=NONE] Device Info screen. Okay we get it, stop pressing, you already have it on -->
     <string name="show_dev_already_cm">No need, you have already enabled development settings.</string>
+
+    <!-- Hardware info -->
+    <!-- Label for device's hardware platform value [CHAR LIMIT=40] -->
+    <string name="platform_revision">Platform</string>
+    <!-- Label for device's hardware ram size [CHAR LIMIT=40] -->
+    <string name="total_ram">Total RAM</string>
 
     <!-- Launch Dev Tools -->
     <string name="development_tools_title">Development tools</string>
@@ -120,6 +126,9 @@
     <string name="security_settings_fingerprint_sensor_location_left">left side</string>
     <string name="security_settings_fingerprint_sensor_location_right">right side</string>
 
+    <!-- Hostname setting -->
+    <string name="device_hostname">Device hostname</string>
+
     <!-- Increasing ring tone volume -->
     <string name="increasing_ring_volume_option_title">Increasing ring volume</string>
     <string name="increasing_ring_min_volume_title">Start volume</string>
@@ -142,10 +151,10 @@
     <string name="sim_enabler_in_call">Unable to perform the operation while in call.</string>
     <string name="sim_enabler_both_inactive">Can\'t disable all SIM cards</string>
     <string name="sim_enabler_enabling">Activating\u2026</string>
-    <string name="sim_enabler_disabling">Deactivating\u2026 </string>
+    <string name="sim_enabler_disabling">Deactivating\u2026</string>
     <string name="sub_activate_success">SIM activated.</string>
     <string name="sub_activate_failed">Activation failed.</string>
-    <string name="sub_deactivate_success">SIM deactivated</string>
+    <string name="sub_deactivate_success">SIM deactivated.</string>
     <string name="sub_deactivate_failed">Deactivation failed.</string>
 
     <!-- Names of categories of app ops tabs - extension of AOSP -->
@@ -338,10 +347,35 @@
 
     <string name="security_privacy_settings_title">Security &amp; privacy</string>
 
+    <!-- LineageOS legal -->
+    <string name="lineagelicense_title">LineageOS legal</string>
+
     <!-- Volume settings - Volume adjustment sound -->
     <string name="volume_adjust_sounds_title">Volume adjustment sounds</string>
 
     <!-- Full screen aspect ratio -->
     <string name="full_screen_aspect_ratio_title">Full screen aspect ratio</string>
     <string name="full_screen_aspect_ratio_summary">Force apps to use full screen aspect ratio, note that some apps may not work properly in full screen</string>
+
+    <!-- Wake on plug -->
+    <string name="wake_when_plugged_or_unplugged_title">Wake on plug</string>
+    <string name="wake_when_plugged_or_unplugged_summary">Turn the screen on when connecting or disconnecting a power source</string>
+
+    <!-- Heads-up -->
+    <string name="heads_up_notifications_enabled_title">Heads-up</string>
+    <string name="heads_up_notifications_enabled_summary">Display priority notifications in a small floating window</string>
+
+    <!-- High touch sensitivity -->
+    <string name="high_touch_sensitivity_title">High touch sensitivity</string>
+    <string name="high_touch_sensitivity_summary">Increase touchscreen sensitivity so it can be used while wearing gloves</string>
+
+    <!-- Touchscreen hovering -->
+    <string name="touchscreen_hovering_title">Touchscreen hovering</string>
+    <string name="touchscreen_hovering_summary">Allows you to hover the screen like a mouse in web browsers, remote desktops, etc</string>
+
+    <!-- Per-app data restrictions -->
+    <string name="data_usage_app_restrict_data">Cellular data</string>
+    <string name="data_usage_app_restrict_data_summary">Enable usage of cellular data</string>
+    <string name="data_usage_app_restrict_wifi">Wi\u2011Fi data</string>
+    <string name="data_usage_app_restrict_wifi_summary">Enable usage of Wi\u2011Fi data</string>
 </resources>

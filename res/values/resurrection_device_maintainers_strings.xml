@@ -19,6 +19,7 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+  <string name="device_category_generic_title">GENERIC</string>
   <string name="device_category_samsung_title">SAMSUNG</string>
   <string name="device_category_sony_title">SONY</string>
   <string name="device_category_lg_title">LG</string>
@@ -46,6 +47,22 @@
   <string name="device_category_jiayu_title">Jiayu</string>
   <string name="device_category_nextbit_title">Nextbit</string>
    
+  <string name="device_genericarm64aonly" translatable="false">Generic System Image</string>
+  <string name="device_genericarm64aonly_codename" translatable="false">ARM64 A-Only</string>
+  <string name="device_genericarm64aonly_maintainer" translatable="false">Mr. ACAR</string>
+
+  <string name="device_genericarm64ab" translatable="false">Generic System Image</string>
+  <string name="device_genericarm64ab_codename" translatable="false">ARM64 AB</string>
+  <string name="device_genericarm64ab_maintainer" translatable="false">Mr. ACAR</string>
+ 
+  <string name="device_genericarmaonly" translatable="false">Generic System Image</string>
+  <string name="device_genericarmaonly_codename" translatable="false">ARM A-Only</string>
+  <string name="device_genericarmaonly_maintainer" translatable="false">Mr. ACAR</string>
+
+  <string name="device_generichkirin" translatable="false">Generic System Image</string>
+  <string name="device_generichkirin_codename" translatable="false">Huawei Kirin</string>
+  <string name="device_generichkirin_maintainer" translatable="false">Alexander Pohl </string>
+
   <string name="device_a610" translatable="false">ZTE BLADE A610</string>
   <string name="device_a610_codename" translatable="false">a610</string>
   <string name="device_a610_maintainer" translatable="false">Roman Yukovsky (mosya234)</string>
@@ -84,7 +101,7 @@
 
   <string name="device_A6020" translatable="false">Lenovo Vibe K5/K5+</string>
   <string name="device_A6020_codename" translatable="false">A6020</string>
-  <string name="device_A6020_maintainer" translatable="false">Yash Garg</string>
+  <string name="device_A6020_maintainer" translatable="false"></string>
 
   <string name="device_a6000" translatable="false">Lenovo A6000</string>
   <string name="device_a6000_codename" translatable="false">a6000</string>
@@ -92,7 +109,7 @@
 
   <string name="device_p2a42" translatable="false">Lenovo P2</string>
   <string name="device_p2a42_codename" translatable="false">p2a42</string>
-  <string name="device_p2a42_maintainer" translatable="false">Vedat Ak (Incredible)</string>
+  <string name="device_p2a42_maintainer" translatable="false">Fullbustah</string>
 
   <string name="device_ms013g" translatable="false">Grand 2 SM-G7102</string>
   <string name="device_ms013g_codename" translatable="false">ms013g</string>
@@ -120,7 +137,7 @@
 
   <string name="device_merlin" translatable="false">Moto G Turbo Edition</string>
   <string name="device_merlin_codename" translatable="false">Merlin</string>
-  <string name="device_merlin_maintainer" translatable="false">Abhinai Sanka</string>
+  <string name="device_merlin_maintainer" translatable="false">Hritik Utekar</string>
 
   <string name="device_condor" translatable="false">Moto E</string>
   <string name="device_condor_codename" translatable="false">Condor</string>
@@ -132,7 +149,7 @@
 
   <string name="device_potter" translatable="false">Moto G5 Plus</string>
   <string name="device_potter_codename" translatable="false">Potter</string>
-  <string name="device_potter_maintainer" translatable="false">Henrique Silva (jhenrique09)</string>
+  <string name="device_potter_maintainer" translatable="false">Akhil Menon (Akhmen18)</string>
 
   <string name="device_sanders" translatable="false">Moto G5S Plus</string>
   <string name="device_sanders_codename" translatable="false">sanders</string>
@@ -177,6 +194,11 @@
   <string name="device_oneplus5t" translatable="false">OnePlus 5T</string>
   <string name="device_oneplus5t_codename" translatable="false">dumpling</string>
   <string name="device_oneplus5t_maintainer" translatable="false">Varun Date</string>
+
+  <string name="device_oneplus6" translatable="false">OnePlus 6</string>
+  <string name="device_oneplus6_codename" translatable="false">enchilada</string>
+  <string name="device_oneplus6_maintainer" translatable="false">Varun Date</string>
+
 
   <string name="device_oneplus5" translatable="false">OnePlus 5</string>
   <string name="device_oneplus5_codename" translatable="false">cheeseburger</string>
@@ -268,7 +290,7 @@
 
   <string name="device_herolte" translatable="false">Galaxy S7</string>
   <string name="device_herolte_codename" translatable="false">SM-G930F/FD/W8/S/K/L</string>
-  <string name="device_herolte_maintainer" translatable="false">schwabe93 </string>
+  <string name="device_herolte_maintainer" translatable="false">Ivan Meler </string>
 
   <string name="device_hero2lte" translatable="false">Galaxy S7 edge</string>
   <string name="device_hero2lte_codename" translatable="false">SM-G935F/FD/W8/S/K/L</string>
@@ -300,7 +322,7 @@
    
   <string name="device_zenfone3" translatable="false">Zenfone 3</string>
   <string name="device_zenfone3_codename" translatable="false">ZE520KL/ZE552KL</string>
-  <string name="device_zenfone3_maintainer" translatable="false">fosseperme</string> 
+  <string name="device_zenfone3_maintainer" translatable="false">Felipe Silva (lipebs)</string> 
 
   <string name="device_fortunave3g" translatable="false">Galaxy Grand Prime</string>
   <string name="device_fortunave3g_codename" translatable="false">SM-G530H</string>
@@ -662,10 +684,6 @@
   <string name="device_maguro_codename" translatable="false">Maguro</string>
   <string name="device_maguro_maintainer" translatable="false"></string>
 
-  <string name="device_garlic" translatable="false">Yu Yureka Black</string>
-  <string name="device_garlic_codename" translatable="false">Garlic</string>
-  <string name="device_garlic_maintainer" translatable="false">Vjs Pranav</string>
-
   <string name="device_tomato" translatable="false">Yu Yureka</string>
   <string name="device_tomato_codename" translatable="false">Tomato</string>
   <string name="device_tomato_maintainer" translatable="false">Sanchit Rohilla</string>
@@ -681,6 +699,14 @@
   <string name="device_sambar" translatable="false">Yu Yutopia</string>
   <string name="device_sambar_codename" translatable="false">Sambar</string>
   <string name="device_sambar_maintainer" translatable="false">Darshan M. (darshan1205)</string>
+
+  <string name="device_garlic" translatable="false">Yu Yureka Black</string>
+  <string name="device_garlic_codename" translatable="false">Garlic</string>
+  <string name="device_garlic_maintainer" translatable="false">Vjs Pranav</string>
+
+  <string name="device_taco" translatable="false">Yu Yureka 2</string>
+  <string name="device_taco_codename" translatable="false">Taco</string>
+  <string name="device_taco_maintainer" translatable="false">Vjs Pranav</string>
 
   <string name="device_armani" translatable="false">Xiaomi Redmi 1S </string>
   <string name="device_armani_codename" translatable="false">Armani</string>
@@ -884,11 +910,11 @@
 
   <string name="device_z00t" translatable="false">Asus Zenfone 2 Laser/Selfie (1080p)</string>
   <string name="device_z00t_codename" translatable="false">Z00T</string>
-  <string name="device_z00t_maintainer" translatable="false">Fabb2303</string>
+  <string name="device_z00t_maintainer" translatable="false">suhailit, theimpulson</string>
 
   <string name="device_z00l" translatable="false">Asus Zenfone 2 Laser (720p)</string>
   <string name="device_z00l_codename" translatable="false">Z00L</string>
-  <string name="device_z00l_maintainer" translatable="false">Fabb2303</string>
+  <string name="device_z00l_maintainer" translatable="false">suhailit, theimpulson</string>
 
   <string name="device_n5100" translatable="false">Note 8.0 3g</string>
   <string name="device_n5100_codename" translatable="false">n5100</string>

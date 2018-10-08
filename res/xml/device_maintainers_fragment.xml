@@ -10,6 +10,39 @@
          android:selectable="false" />
 
     <PreferenceCategory
+        android:id="@+id/device_category_generic"
+	android:title="@string/device_category_generic_title">
+
+        <com.android.settings.rr.Preferences.DevicePreference
+            android:id="@+id/device_genericarm64aonly"
+            android:title="@string/device_genericarm64aonly"
+            app:codename="@string/device_genericarm64aonly_codename"
+            app:maintainer="@string/device_genericarm64aonly_maintainer"
+	    app:type="phone" />
+
+        <com.android.settings.rr.Preferences.DevicePreference
+            android:id="@+id/device_genericarm64ab"
+            android:title="@string/device_genericarm64ab"
+            app:codename="@string/device_genericarm64ab_codename"
+            app:maintainer="@string/device_genericarm64ab_maintainer"
+            app:type="phone" />
+
+        <com.android.settings.rr.Preferences.DevicePreference
+            android:id="@+id/device_genericarmaonly"
+            android:title="@string/device_genericarmaonly"
+            app:codename="@string/device_genericarmaonly_codename"
+            app:maintainer="@string/device_genericarmaonly_maintainer"
+            app:type="phone" />
+
+        <com.android.settings.rr.Preferences.DevicePreference
+            android:id="@+id/device_generichkirin"
+            android:title="@string/device_generichkirin"
+            app:codename="@string/device_generichkirin_codename"
+            app:maintainer="@string/device_generichkirin_maintainer"
+            app:type="phone" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:id="@+id/device_category_lg"
         android:title="@string/device_category_lg_title">
 
@@ -997,17 +1030,19 @@
             app:maintainer="@string/device_oneplus5t_maintainer"
             app:type="phone" />
 
+        <com.android.settings.rr.Preferences.DevicePreference
+            android:id="@+id/device_oneplus6"
+            android:title="@string/device_oneplus6"
+            app:codename="@string/device_oneplus6_codename"
+            app:maintainer="@string/device_oneplus6_maintainer"
+            app:type="phone" />
+
+
     </PreferenceCategory>
 
     <PreferenceCategory
         android:id="@+id/device_category_yu"
         android:title="@string/device_category_yu_title">
-        <com.android.settings.rr.Preferences.DevicePreference
-            android:id="@+id/device_garlic"
-            android:title="@string/device_garlic"
-            app:codename="@string/device_garlic_codename"
-            app:maintainer="@string/device_garlic_maintainer"
-            app:type="phone" />
         <com.android.settings.rr.Preferences.DevicePreference
             android:id="@+id/device_tomato"
             android:title="@string/device_tomato"
@@ -1032,6 +1067,19 @@
             app:codename="@string/device_jalebi_codename"
             app:maintainer="@string/device_jalebi_maintainer"
             app:type="phone" />
+        <com.android.settings.rr.Preferences.DevicePreference
+            android:id="@+id/device_garlic"
+            android:title="@string/device_garlic"
+            app:codename="@string/device_garlic_codename"
+            app:maintainer="@string/device_garlic_maintainer"
+            app:type="phone" />
+        <com.android.settings.rr.Preferences.DevicePreference
+            android:id="@+id/device_taco"
+            android:title="@string/device_taco"
+            app:codename="@string/device_taco_codename"
+            app:maintainer="@string/device_taco_maintainer"
+            app:type="phone" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
